@@ -1,0 +1,33 @@
+model disaggregation.mod ;
+data disaggregation.dat ;
+display solve_message;
+option show_stats 1;
+option solver gurobi;
+option gurobi_options $gurobi_options 'outlev 1' 'timelim 120' 'MipGAP 0.05';
+solve > "logfile_disaggregation.txt"; 
+display solve_result >> "logfile_disaggregation.txt";
+display solve_result_num >> "logfile_disaggregation.txt";
+
+
+display error> risultato_disaggregation.txt;
+display _ampl_user_time > risultato_disaggregation.txt;
+display _solve_user_time > risultato_disaggregation.txt;
+
+display x > risultato_disaggregation.txt;
+display active > risultato_disaggregation.txt;
+
+for {a in A}
+{
+	display sum{t in T} sum{l in Lev[a]}x[a,l,t]*l> risultato_disaggregation.txt;
+	display (sum{t in T} sum{l in Lev[a]}x[a,l,t]*l)/(sum{ti in T} c[ti])> risultato_disaggregation.txt;
+}
+display sum{t in T}(c[t]-sum{a in A, l in Lev[a]}x[a,l,t]*l)/(sum{ti in T} c[ti])> risultato_disaggregation.txt;
+
+for {t in T}
+{
+	display c[t]-sum{a in A, l in Lev[a]}x[a,l,t]*l> risultato_disaggregation.txt;
+}
+
+
+
+

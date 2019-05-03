@@ -1,0 +1,46 @@
+#DISAGGREGATION_REDUCED VERSION
+
+param V_DAT=4;
+
+set A:= fridge washing_machine tumble_dryer dishwasher AC electric_car electric_oven heat_pump;
+set L:= 0 0.05 0.25 0.4 0.5 0.6 0.65 0.75 0.8 ;
+set Lev[fridge]:= 0 0.05 ;
+set Lev[washing_machine]:= 0 0.05 0.5 ;
+set Lev[tumble_dryer]:= 0 0.05 0.75;
+set Lev[dishwasher]:= 0 0.4;
+set Lev[AC]:= 0 0.25 0.8;
+set Lev[electric_car]:= 0 0.75 ;
+set Lev[electric_oven]:= 0 0.6;
+set Lev[heat_pump]:= 0 0.25 0.65 ;
+
+param d:=
+fridge 96,
+washing_machine 8,
+tumble_dryer 8,
+dishwasher 13,
+AC 48,
+electric_car 32,
+electric_oven 6,
+heat_pump 96;
+
+param m:=
+fridge 2.4,
+washing_machine 1,
+tumble_dryer 3,
+dishwasher 2,
+AC 13,
+electric_car 20,
+electric_oven 2.5,
+heat_pump 10;
+
+param w:=
+fridge 96,
+washing_machine 3,
+tumble_dryer 4,
+dishwasher 3,
+AC 0,
+electric_car 8,
+electric_oven 2,
+heat_pump 0;
+
+
